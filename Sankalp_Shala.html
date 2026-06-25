@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sankalp Marathi Shala - Complete Information</title>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFE5CC 0%, #FFF0E1 25%, #FFF8F0 50%, #FFFBF7 75%, #FFFFFF 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            position: relative; 
+            z-index: 1; 
+        }
+
+        .header-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .corner-lottie {
+            width: 200px;
+            height: 200px;
+            flex-shrink: 0;
+        }
+
+        header {
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            margin: 0;
+            color: #64748b;
+        }
+
+        /* ── Announcement Banner ── */
+        .announcement-banner {
+            background: #ffffff;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 20px;
+            padding: 36px 48px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+
+        .announcement-banner .ann-label {
+            font-size: 1em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #56127D 0%, #B5171D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 18px;
+        }
+
+        .announcement-banner .ann-main {
+            font-size: 1.8em;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .announcement-banner .ann-secondary {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #6b7280; 
+            margin-bottom: 12px;
+        }
+
+        .announcement-banner .ann-tertiary {
+            font-size: 0.95em;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .announcement-banner {
+                padding: 24px 20px;
+                border-radius: 16px;
+            }
+
+            .announcement-banner .ann-main {
+                font-size: 1.5em;
+            }
+
+            .announcement-banner .ann-secondary {
+                font-size: 1em;
+            }
+        }
+
+        /* Hide scrollbars for all elements */
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        *::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Main Content Container */
+        .main-container {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 50px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(255, 140, 50, 0.15);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+
+        /* Section Divider */
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(181, 23, 29, 0.3), transparent);
+            margin: 60px 0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #FFB347 0%, #FFCC33 50%, #FF6B9D 100%);
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 30px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .emoji-decoration {
+            font-size: 60px;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .main-title {
+            font-size: 3.5em;
+            font-weight: 800;
+            margin: 20px 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-description {
+            font-size: 1.1em;
+            margin-bottom: 32px;
+            color: white;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button {
+            background-color: white;
+            color: #FF6B9D;
+            padding: 18px 48px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .hero-image img {
+            width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1em;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Events Grid */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,.18);
+            overflow: hidden;
+            cursor: pointer;
+            transition: .3s;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .event-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 5;
+        }
+
+        .badge-previous { background: #6b7280; color: #fff; }
+        .badge-current { background: #fbbf24; color: #1f2937; }
+        .badge-upcoming { background: #10b981; color: #fff; }
+
+        .event-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .4s;
+        }
+
+        .event-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .event-content {
+            padding: 24px;
+        }
+
+        .event-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1f2937;
+        }
+
+        /* Programs Grid */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+
+        .program-card:nth-child(1) { border-color: #FFB347; }
+        .program-card:nth-child(2) { border-color: #4ECDC4; }
+        .program-card:nth-child(3) { border-color: #FF6B9D; }
+        .program-card:nth-child(4) { border-color: #A78BFA; }
+        .program-card:nth-child(5) { border-color: #7C3AED; }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .program-icon {
+            font-size: 48px;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+
+        .program-card:nth-child(1) .program-icon { background: linear-gradient(135deg, #FFB347, #FFCC33); }
+        .program-card:nth-child(2) .program-icon { background: linear-gradient(135deg, #4ECDC4, #44A08D); }
+        .program-card:nth-child(3) .program-icon { background: linear-gradient(135deg, #FF6B9D, #FFB347); }
+        .program-card:nth-child(4) .program-icon { background: linear-gradient(135deg, #A78BFA, #7C3AED); }
+        .program-card:nth-child(5) .program-icon { background: linear-gradient(135deg, #7C3AED, #A78BFA); }
+
+        .program-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2D3748;
+            flex: 1;
+        }
+
+        .program-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4A5568;
+        }
+
+        /* Organization Structure */
+        .org-section {
+            padding: 20px 0;
+        }
+
+        .tier-title {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #434343;
+            margin-bottom: 30px;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tier-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .member-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+        }
+
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 4px solid #e2e8f0;
+            transition: border-color 0.3s ease;
+        }
+
+        .member-card:hover .member-photo {
+            border-color: #B5171D;
+        }
+
+        .member-name {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 8px 0;
+        }
+
+        .member-title {
+            font-size: 0.9em;
+            color: #B5171D;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .connecting-line {
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(180deg, rgba(181, 23, 29, 0.3), rgba(86, 18, 125, 0.3));
+            margin: 0 auto;
+        }
+
+        /* Schedule Table */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            margin-bottom: 40px;
+        }
+
+        .schedule-table thead {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #ffffff;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .schedule-table th {
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-size: 13px;
+        }
+
+        .schedule-table tbody tr {
+            border-bottom: 1px solid #fde68a;
+        }
+
+        .schedule-table tbody tr:hover {
+            background: #fff7ed;
+        }
+
+        .badge {
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .online { background: #fde68a; color: #92400e; }
+        .in-person { background: #ffedd5; color: #9a3412; }
+
+        /* FAQ Section */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+        }
+
+        .faq-question-row {
+            padding: 24px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .faq-question {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2D3748;
+            flex: 1;
+        }
+
+        .faq-icon {
+            font-size: 28px;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            color: #FF6B9D;
+        }
+
+        .faq-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.active {
+            max-height: 800px;
+        }
+
+        .faq-answer-content {
+            padding: 0 28px 28px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #4A5568;
+            white-space: pre-wrap;
+        }
+
+        /* Loading and Error States */
+        .loading {
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 1.2em;
+            color: #64748b;
+        }
+
+        .error {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 1em;
+            color: #dc2626;
+            background: rgba(254, 226, 226, 0.8);
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        /* Timeline Button */
+        .timeline-button {
+            display: inline-block;
+            padding: 16px 48px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .timeline-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+
+            .header-wrapper {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .corner-lottie {
+                width: 150px;
+                height: 150px;
+            }
+
+            header { text-align: center; }
+
+            h1 { font-size: 1.8em; }
+
+            .main-container {
+                padding: 15px;
+                border-radius: 30px;
+            }
+
+            .hero-section {
+                padding: 30px 15px;
+                border-radius: 20px;
+            }
+
+            .main-title { font-size: 2em; }
+            .subtitle { font-size: 1.2em; }
+            .hero-description { 
+                font-size: 0.95em;
+                padding: 0 10px;
+            }
+
+            .cta-button {
+                padding: 14px 24px;
+                font-size: 0.9em;
+                word-wrap: break-word;
+                max-width: 100%;
+            }
+
+            .hero-image img {
+                width: 200px;
+            }
+
+            .section-title { font-size: 1.6em; }
+            .section-subtitle { font-size: 0.95em; }
+
+            .events-grid,
+            .programs-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0;
+            }
+
+            .program-card {
+                width: 100%;
+                max-width: 100%;
+                padding: 20px 15px;
+            }
+
+            .program-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .program-title {
+                font-size: 1.1em;
+                text-align: center;
+            }
+
+            .program-description {
+                font-size: 0.9em;
+            }
+
+            .event-card {
+                padding: 15px;
+            }
+
+            .member-card {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .tier-title { font-size: 1.2em; }
+
+            .section-divider { margin: 40px 0; }
+
+            .schedule-table {
+                font-size: 11px;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .schedule-table thead,
+            .schedule-table tbody,
+            .schedule-table tr,
+            .schedule-table th,
+            .schedule-table td {
+                display: block;
+            }
+
+            .schedule-table thead {
+                display: none;
+            }
+
+            .schedule-table tr {
+                margin-bottom: 15px;
+                border: 1px solid #fde68a;
+                border-radius: 10px;
+                padding: 10px;
+            }
+
+            .schedule-table td {
+                text-align: left;
+                padding: 8px 5px;
+                position: relative;
+                padding-left: 50%;
+            }
+
+            .schedule-table td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                font-weight: 600;
+                color: #92400e;
+            }
+
+            .faq-question {
+                font-size: 1em;
+            }
+
+            .faq-question-row {
+                padding: 18px 15px;
+            }
+
+            .faq-answer-content {
+                padding: 0 15px 18px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .corner-lottie {
+                width: 120px;
+                height: 120px;
+            }
+
+            h1 { font-size: 1.5em; }
+
+            .main-container {
+                padding: 10px;
+                border-radius: 20px;
+            }
+
+            .hero-section {
+                padding: 20px 10px;
+            }
+
+            .main-title { font-size: 1.6em; }
+            .section-title { font-size: 1.4em; }
+
+            .cta-button {
+                padding: 12px 20px;
+                font-size: 0.85em;
+            }
+
+            .program-card {
+                padding: 15px 10px;
+            }
+
+            .program-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 36px;
+            }
+
+            .event-card {
+                padding: 12px;
+            }
+
+            .faq-question-row {
+                padding: 15px 12px;
+            }
+
+            .faq-icon {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="header-wrapper">
+        <header>
+            <h1>Sankalp Marathi Shala</h1>
+            <p>Building Language, Culture & Community</p>
+        </header>
+    </div>
+
+    <!-- ── Announcement Banner ── -->
+    <div class="announcement-banner">
+        <p class="ann-label">Announcement</p>
+        <p class="ann-main">New Year Student Enrollment and Teachers hiring <br>form starts from July 15 to July 30</p>
+        <p class="ann-secondary">Last Day to pay Shala fees is August 10 2026</p>
+        
+    </div>
+
+    <div class="main-container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="emoji-decoration">🎓✨🚀</div>
+                <h2 class="main-title">विद्या परं बलम्!</h2>
+                <p class="subtitle">Where Every Student Shines Bright ⭐</p>
+                <p class="hero-description">"संकल्प मराठी शाळा" हा आमचा महत्त्वाचा उपक्रम जाहीर करताना आनंद होत आहे.
+याचा उद्देश विद्यार्थ्यांना नाविन्यपूर्ण मराठी शिक्षण, सर्जनशीलता आणि वैयक्तिक विकासाच्या संधी देणे आहे.
+या उपक्रमाच्या यशासाठी आपला सक्रिय सहभाग व पाठिंबा अपेक्षित आहे.
+एकत्र येऊन आपण सकारात्मक बदल घडवू शकतो!"</p>
+                <button class="cta-button" onclick="window.location.href='mailto:sankalpmarathishala@gmail.com'">sankalpmarathishala@gmail.com 🎉</button>
+                <div class="hero-image">
+                    <img src="https://drive.google.com/thumbnail?id=1H3yvor-YEEHFFt_gKzI2pnL2Br5FrDFh&sz=w400" alt="Sankalp Marathi Shala">
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Events Section -->
+        <div class="section-header">
+            <h2 class="section-title">Our Events</h2>
+            <p class="section-subtitle">Discover present events</p>
+        </div>
+        <div class="events-grid" id="events-grid"></div>
+
+        <div class="section-divider"></div>
+
+        <!-- Why This Matters Section -->
+        <div class="section-header">
+            <h2 class="section-title">Why This Matters for Our Kids 💛</h2>
+            <p class="section-subtitle">Strong language skills, cultural identity, and academic growth</p>
+        </div>
+        <div class="programs-grid">
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-icon">📚</div>
+                    <h3 class="program-title">Early Marathi Learning</h3>
+                </div>
+                <p class="program-description">
+                    Enable children to confidently learn Marathi—speaking, reading, and writing—
+                    while they are at the ideal age to absorb languages naturally.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-icon">🌿</div>
+                    <h3 class="program-title">Cultural Preservation</h3>
+                </div>
+                <p class="program-description">
+                    Help preserve Marathi as our mother tongue and pass its rich cultural heritage
+                    on to future generations.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-icon">🎓</div>
+                    <h3 class="program-title">Foreign Language Option</h3>
+                </div>
+                <p class="program-description">
+                    Provide our children the opportunity to choose Marathi as a recognized foreign
+                    language during their academic journey.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-icon">🏅</div>
+                    <h3 class="program-title">College-Ready Language Credits</h3>
+                </div>
+                <p class="program-description">
+                    Support students in earning foreign-language credits in Marathi to strengthen
+                    their college applications and academic profiles.
+                </p>
+            </div>
+
+            <div class="program-card">
+                <div class="program-header">
+                    <div class="program-icon">🤝</div>
+                    <h3 class="program-title">Youth Volunteering & Leadership</h3>
+                </div>
+                <p class="program-description">
+                    Offer valuable volunteering and leadership opportunities for youth through our
+                    Shala program.
+                </p>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Organization Structure -->
+        <div class="org-section">
+            <div class="section-header">
+                <h2 class="section-title">Organization Structure 2026</h2>
+                <p class="section-subtitle">Meet Our Leadership Team</p>
+            </div>
+            <div id="orgContent" class="loading">Loading organization data...</div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- School Schedule -->
+        <div class="section-header">
+            <h2 class="section-title">📚 School Schedule</h2>
+            <p class="section-subtitle">Weekly class schedule and important dates</p>
+        </div>
+        <div id="scheduleLoader" class="loading">Loading schedule...</div>
+        <table class="schedule-table" id="scheduleTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Week</th>
+                    <th>Class Type</th>
+                    <th>Week #</th>
+                    <th>Additional Info</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <div class="section-divider"></div>
+
+        <!-- FAQ Section -->
+        <div class="section-header">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know</p>
+        </div>
+        <div class="faq-list" id="faq-list"></div>
+
+        <div class="section-divider"></div>
+
+        <!-- Footer CTA -->
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="emoji-decoration">🎉 🌟 📚</div>
+                <p class="subtitle">Ready to start an amazing learning adventure?</p>
+                <button class="cta-button" onclick="window.location.href='mailto:sankalpmarathishala@gmail.com'">Let's Get Started! 🚀</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// FAQ Data and Functions
+const faqs = [
+    { question: "What is the name of the school?", answer: "Sankalp Marathi Shala (BMM)" },
+    { question: "Who is responsible for defining the school curriculum?", answer: "Bruhan Maharashtra Mandal of North America approved in collaboration with Bharati Vidyapeeth, Pune, India." },
+    { question: "How many levels are there?", answer: "We offer a Five-Level Program, spanning from the 1st Level to the 5th Level." },
+    { question: "What is the expected duration to pass each level?", answer: "Younger children (5-7 years old) may require two years to prepare for the Level 1 exam, whereas older ones (10 years old) could potentially be ready in one year, depending on their progress. It's important to note that the progression is not strictly one level per grade or year, and the time to achieve each level may vary." },
+    { question: "Any Recognition are available or offered?", answer: "The students are presented with BMM BV joint certificates for the 'Marathi Bhasha' exams upon successfully completing each level and meeting the specified criteria." },
+    { question: "What is the minimum age required for enrolling?", answer: "As this marks our inaugural year, we will commence enrolling children aged over 5 years. The child needs to demonstrate the ability to hold a pencil for writing.\n\nStarting 2024 we are introducing batch for 3-5 yrs kids to prepare them for next levels." },
+    { question: "What if my child already speaks Marathi?", answer: "BMM expects competency in reading, writing, and speaking for each level exam. If your child catches up on reading and writing within the school year, they can take the 1st level exam. If they pass, they can proceed to the next level, provided we have a sufficient number of similar students and teachers." },
+    { question: "What is the duration of the school year?", answer: "The Marathi School will adhere to the regular school cycle, operating from September to June." },
+    { question: "Classes Frequency and Schedule?", answer: "The program includes a 45-minute session per week. Various event-based in person activities as per the occasions. Beginning each year the Calendar will be published for regular classes, in person events, and holidays to help you plan other activities of your kids." },
+    { question: "Where do classes take place?", answer: "Regular weekly classes conducted through virtual classrooms. In-person attendance required for event-based activities, which can be combined with our other events such as Ganapati and Diwali. Our coordinators will facilitate a convenient location for everyone." },
+    { question: "What about the school's teachers, committee, and training?", answer: "All teachers are on volunteer basis, with current volunteer team listed on this page. As this is non profit, Teachers do not get paid for the time they contribute as volunteer. We prefer and welcome any parents who would like to volunteer, we can help you get started even if you don't have prior experience. The school Principal shall be part of Mandal's executive team." },
+    { question: "Homework and My role as parent?", answer: "Yes, there will be homework after every class. Based on experience and other Marathi Shala operations it is expected that parents involvement is equally important along with teachers. Parents shall provide required assistance to kids in understanding the homework, completion and submitting on time before the next class." },
+    { question: "How many batches are there?", answer: "We can have multiple batches representing different towns/age groups, and it also depends on our teaching volunteers." },
+    { question: "Evaluation and Assessment?", answer: "Shala will use the evaluation criteria as received from BMM time to time which includes language understanding in all aspect like read, write, speak. Also participation in person events and activities may have some weightage." },
+    { question: "Books and Materials?", answer: "We will be using books from Austin Marathi Mandal as they provide a predefined framework for weekly classes for each level, making it easy for teachers, kids, and parents to keep track of progress. This could change in future as the Team revisits during yearly enrollment." },
+    { question: "Fees, Payments?", answer: "Fees is collected as required only to meet expenses. The primary cost includes BMM exam fees, books, and other additional expenses for event-based activities, venue reservations for events, summer picnic etc. Based on experiences with other BMM schools. We are setting the fee at $175 per year per child (first kid) and for sibling $140.\n\nFees should be paid only to Mandal's Zelle to – sankalpmarathimandal@gmail.com or as guided during annual enrollment." },
+    { question: "When did the Marathi School program start?", answer: "Our first batch started on Oct 15th, 2023 on the Occasion of GhatSthapana. However every year the Shala classes will start in Sept along with your regular school and end in June. Keep eye on Calendar." },
+    { question: "How we would handle expenses?", answer: "The school's accounts and expenses will be managed separately from the Mandal's other events unless it's a joint event. Any leftover funds, if available, will be carried over to the next year or can be utilized for kids' activities." },
+    { question: "How can I join Sankalp Marathi Mandal?", answer: "You can join by filling out our membership form online or during any event." },
+    { question: "Do you conduct Marathi classes?", answer: "Yes, Marathi Shaala runs every Sunday for multiple age groups." },
+    { question: "How can I volunteer?", answer: "Please contact a committee member or fill out the volunteer form posted on our website." }
+];
+
+function generateFAQs() {
+    const faqList = document.getElementById('faq-list');
+    
+    faqs.forEach((faq, index) => {
+        const faqItem = document.createElement('div');
+        faqItem.className = 'faq-item';
+        faqItem.innerHTML = `
+            <div class="faq-question-row">
+                <h3 class="faq-question">${faq.question}</h3>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+                <p class="faq-answer-content">${faq.answer}</p>
+            </div>
+        `;
+        
+        faqList.appendChild(faqItem);
+        
+        faqItem.addEventListener('click', function() {
+            const answer = this.querySelector('.faq-answer');
+            const icon = this.querySelector('.faq-icon');
+            
+            answer.classList.toggle('active');
+            icon.classList.toggle('active');
+            icon.textContent = answer.classList.contains('active') ? '−' : '+';
+        });
+    });
+}
+
+// Events Data Functions
+const EVENTS_SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQwhZUDU8JllzRBmgT0-9WlJUd7eyFxeUPMHCqt_IXWkpteR0VCOra4SrTX34q6K217P0Nc47XuSdLQ/pub?output=csv";
+
+function badgeText(t) {
+    return t === "previous" ? "Previous" : t === "current" ? "Happening Now" : "Upcoming";
+}
+
+function loadEvents() {
+    Papa.parse(EVENTS_SHEET_URL, {
+        download: true,
+        header: true,
+        complete: res => {
+            const grid = document.getElementById("events-grid");
+            res.data
+                .filter(e => e.Name && e.Name.trim())
+                .sort((a, b) => ({previous: 0, current: 1, future: 2}[a.Type] - {previous: 0, current: 1, future: 2}[b.Type]))
+                .forEach(e => {
+                    const t = e.Type || "future";
+                    const cardElement = document.createElement('article');
+                    cardElement.className = `event-card ${t}`;
+                    
+                    cardElement.innerHTML = `
+                        <div class="event-badge badge-${t}">${badgeText(t)}</div>
+                        <div class="event-image">
+                            ${e.ImageURL ? `<img src="${e.ImageURL}" alt="${e.Name} event image">` : ""}
+                        </div>
+                        <div class="event-content">
+                            <h3 class="event-name">${e.Name}</h3>
+                            <p style="font-size: 14px; color: #6b7280; margin-bottom: 8px;">
+                                ${e.Month} ${e.Date}, ${e.Year}
+                            </p>
+                            <p style="font-size: 14px; color: #4b5563;">
+                                ${e.Summary || e.Description || ''}
+                            </p>
+                        </div>
+                    `;
+                    
+                    grid.appendChild(cardElement);
+                });
+        }
+    });
+}
+
+// Organization Structure Functions
+const ORG_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRPvAB_lTkilgYZ16JIgbAlZrTaN37TO-pEvzGnwiJNAUcWboS4HVb-dUj_QpH7CW0LUsAudHxCKaur/pub?output=csv';
+
+function convertDriveLink(url) {
+    if (!url || url.trim() === '') return '';
+    const match = url.match(/[-\w]{25,}/);
+    return match ? `https://drive.google.com/thumbnail?id=${match[0]}&sz=w400` : url;
+}
+
+function createMemberCard(member) {
+    const photoUrl = convertDriveLink(member['Actual Photo']) || 'https://via.placeholder.com/120?text=No+Photo';
+    
+    return `
+        <div class="member-card">
+            <img src="${photoUrl}" alt="${member.Name}" class="member-photo" onerror="this.src='https://via.placeholder.com/120?text=Photo'">
+            <h3 class="member-name">${member.Name}</h3>
+            <p class="member-title">${member.Position}</p>
+        </div>
+    `;
+}
+
+function renderOrganization(data) {
+    const orgStructure = {};
+    
+    data.forEach(row => {
+        if (!row.Name || !row.Position || !row['Org Structure']) return;
+        
+        const tier = row['Org Structure'].trim();
+        if (!orgStructure[tier]) {
+            orgStructure[tier] = [];
+        }
+        orgStructure[tier].push(row);
+    });
+
+    const tierOrder = ['Board of Directors', 'Executive Leadership', 'Department Heads', 'Team Members'];
+    
+    let html = '';
+    let isFirst = true;
+
+    tierOrder.forEach(tierName => {
+        if (orgStructure[tierName] && orgStructure[tierName].length > 0) {
+            if (!isFirst) {
+                html += '<div class="connecting-line"></div>';
+            }
+            isFirst = false;
+
+            html += `
+                <div class="org-tier">
+                    <h3 class="tier-title">${tierName}</h3>
+                    <div class="tier-container">
+                        ${orgStructure[tierName].map(member => createMemberCard(member)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    Object.keys(orgStructure).forEach(tierName => {
+        if (!tierOrder.includes(tierName)) {
+            html += '<div class="connecting-line"></div>';
+            html += `
+                <div class="org-tier">
+                    <h3 class="tier-title">${tierName}</h3>
+                    <div class="tier-container">
+                        ${orgStructure[tierName].map(member => createMemberCard(member)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    document.getElementById('orgContent').innerHTML = html;
+}
+
+function loadOrganization() {
+    Papa.parse(ORG_CSV_URL, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+            if (results.data && results.data.length > 0) {
+                renderOrganization(results.data);
+            } else {
+                document.getElementById('orgContent').innerHTML = '<div class="error">No data found in spreadsheet</div>';
+            }
+        },
+        error: function(error) {
+            document.getElementById('orgContent').innerHTML = `<div class="error">Error loading data: ${error.message}</div>`;
+        }
+    });
+}
+
+// Schedule Functions
+function getEmoji(text) {
+    if (!text) return '📘';
+    text = text.toLowerCase();
+    if (text.includes('exam')) return '📝';
+    if (text.includes('holiday') || text.includes('break')) return '🏖️';
+    if (text.includes('diwali')) return '🪔';
+    if (text.includes('christmas')) return '🎄';
+    if (text.includes('project')) return '📌';
+    return '📘';
+}
+
+function extractWeekNumber(value) {
+    const match = String(value).match(/\d+/);
+    return match ? match[0] : '';
+}
+
+function loadSchedule() {
+    Papa.parse("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ71Q0t4tbCvg8nRAdeCboZGT_jtJah5ZGsrsV2EDOKgxak2ktCkM1Y2GtnzoRHZA/pub?output=csv", {
+        download: true,
+        header: false,
+        skipEmptyLines: 'greedy',
+        complete: function(results) {
+            const rows = results.data;
+            const tableBody = document.getElementById("tableBody");
+            const fragment = document.createDocumentFragment();
+
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                if (row.length < 1) continue;
+
+                const [week, classes, rawWeek, info] = row;
+                if (!week && !classes && !rawWeek && !info) continue;
+
+                const weekNum = extractWeekNumber(rawWeek || "");
+                const isOnline = (classes || "").toLowerCase().includes("online");
+
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td data-label="Week"><strong>${week || "-"}</strong></td>
+                    <td data-label="Class Type">
+                        ${classes 
+                            ? `<span class="badge ${isOnline ? 'online' : 'in-person'}">${classes}</span>`
+                            : '<span class="badge online">No Class</span>'}
+                    </td>
+                    <td data-label="Week #" style="text-align: center;"><strong>${weekNum || "-"}</strong></td>
+                    <td data-label="Additional Info">
+                        ${info 
+                            ? `${getEmoji(info)} ${info}`
+                            : '-'}
+                    </td>
+                `;
+                fragment.appendChild(tr);
+            }
+
+            tableBody.appendChild(fragment);
+            document.getElementById("scheduleLoader").style.display = "none";
+            document.getElementById("scheduleTable").style.display = "table";
+        },
+        error: function(err) {
+            document.getElementById("scheduleLoader").innerText = "Failed to load schedule.";
+            console.error(err);
+        }
+    });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    generateFAQs();
+    loadEvents();
+    loadOrganization();
+    loadSchedule();
+});
+</script>
+
+</body>
+</html>
