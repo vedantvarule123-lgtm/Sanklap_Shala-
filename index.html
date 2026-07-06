@@ -1171,7 +1171,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.g
 document.getElementById('modal')?.addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
 function loadEvents() {
-  Papa.parse(CONFIG.EVENTS_CSV, {
+  Papa.parse(EVENTS_SHEET_URL, {
     download: true, header: true,
     complete: res => {
       const grid = document.getElementById('events-grid');
