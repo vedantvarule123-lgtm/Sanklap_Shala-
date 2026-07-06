@@ -354,230 +354,6 @@
             color: #1f2937;
         }
 
-        /* Date overlay on event image */
-        .date-overlay {
-            position: absolute;
-            bottom: 12px;
-            left: 12px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 12px;
-            padding: 6px 14px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 5;
-        }
-
-        .date-overlay .date-month {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #B5171D;
-            letter-spacing: 0.05em;
-        }
-
-        .date-overlay .date-day {
-            font-size: 20px;
-            font-weight: 800;
-            color: #1f2937;
-            line-height: 1;
-        }
-
-        .date-overlay .date-year {
-            font-size: 11px;
-            font-weight: 600;
-            color: #6b7280;
-        }
-
-        .event-venue-info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            color: #6b7280;
-            margin-bottom: 8px;
-        }
-
-        .event-venue-info .venue-icon {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-            color: #56127D;
-        }
-
-        .event-description {
-            font-size: 14px;
-            color: #4b5563;
-            margin-top: 8px;
-            line-height: 1.5;
-        }
-
-        /* ── Event Details Modal ── */
-        body.modal-open {
-            overflow: hidden;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(20, 10, 30, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 1;
-            transition: opacity 0.2s ease;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: #fff;
-            border-radius: 24px;
-            max-width: 640px;
-            width: 100%;
-            max-height: 88vh;
-            overflow-y: auto;
-            position: relative;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
-        }
-
-        .modal-content.animating-in {
-            animation: modalPop 0.4s ease;
-        }
-
-        @keyframes modalPop {
-            from { transform: scale(0.6); opacity: 0; }
-            to   { transform: scale(1); opacity: 1; }
-        }
-
-        .modal-close-btn {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255,255,255,0.9);
-            color: #1f2937;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 10;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: transform 0.2s ease, background 0.2s ease;
-        }
-
-        .modal-close-btn:hover {
-            transform: scale(1.08);
-            background: #fff;
-        }
-
-        .modal-close-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .modal-media {
-            display: none;
-            width: 100%;
-        }
-
-        .modal-media-container {
-            position: relative;
-            width: 100%;
-        }
-
-        .modal-media-container img {
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            display: block;
-            border-radius: 24px 24px 0 0;
-        }
-
-        .view-fullsize-btn {
-            position: absolute;
-            bottom: 16px;
-            right: 16px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(0,0,0,0.55);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .view-fullsize-btn:hover {
-            background: rgba(0,0,0,0.8);
-        }
-
-        .view-fullsize-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .modal-body {
-            padding: 32px;
-        }
-
-        .modal-title {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: #1f2937;
-            margin-bottom: 20px;
-        }
-
-        .modal-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .meta-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 14px;
-            color: #374151;
-        }
-
-        .meta-icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-            color: #B5171D;
-            margin-top: 1px;
-        }
-
-        .modal-desc {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #4b5563;
-            white-space: pre-line;
-        }
-
-        @media (max-width: 640px) {
-            .modal-body {
-                padding: 24px;
-            }
-
-            .modal-title {
-                font-size: 1.3em;
-            }
-        }
-
         /* Programs Grid */
         .programs-grid {
             display: grid;
@@ -1117,23 +893,6 @@
         </div>
         <div class="events-grid" id="events-grid"></div>
 
-        <!-- Event Details Modal -->
-        <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <div class="modal-content" id="modal-content">
-                <button class="modal-close-btn" id="modal-close-btn" onclick="closeModal()" aria-label="Close">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-                <div class="modal-media" id="modal-media"></div>
-                <div class="modal-body">
-                    <h2 class="modal-title" id="modal-title"></h2>
-                    <div class="modal-meta" id="modal-meta"></div>
-                    <p class="modal-desc" id="modal-desc"></p>
-                </div>
-            </div>
-        </div>
-
         <div class="section-divider"></div>
 
         <!-- Why This Matters Section -->
@@ -1313,141 +1072,141 @@ let modalTriggerElement = null;
 const FOCUSABLE_ELEMENTS = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
 function getHighResImageUrl(url) {
-    if (!url) return url;
-    if (url.includes('drive.google.com')) {
-        let fileId = null;
-        if (url.includes('/file/d/'))       fileId = url.match(/\/file\/d\/([^\/\?]+)/)?.[1];
-        else if (url.includes('id='))       fileId = url.match(/id=([^&]+)/)?.[1];
-        else if (url.includes('thumbnail')) fileId = url.match(/thumbnail\?id=([^&]+)/)?.[1];
-        if (fileId) return `https://drive.google.com/thumbnail?id=${fileId}&sz=w2000`;
-    }
-    return url;
+  if (!url) return url;
+  if (url.includes('drive.google.com')) {
+    let fileId = null;
+    if (url.includes('/file/d/'))       fileId = url.match(/\/file\/d\/([^\/\?]+)/)?.[1];
+    else if (url.includes('id='))       fileId = url.match(/id=([^&]+)/)?.[1];
+    else if (url.includes('thumbnail')) fileId = url.match(/thumbnail\?id=([^&]+)/)?.[1];
+    if (fileId) return `https://drive.google.com/thumbnail?id=${fileId}&sz=w2000`;
+  }
+  return url;
 }
 
 function viewFullSize(imageUrl) {
-    window.open(imageUrl.replace(/&sz=w\d+/, '&sz=w4000'), '_blank');
+  window.open(imageUrl.replace(/&sz=w\d+/, '&sz=w4000'), '_blank');
 }
 
 function badgeText(t) {
-    return t === 'previous' ? 'Previous' : t === 'current' ? 'Happening Now' : 'Upcoming';
+  return t === 'previous' ? 'Previous' : t === 'current' ? 'Happening Now' : 'Upcoming';
 }
 
 function animateModalOpen(el) {
-    const r = el.getBoundingClientRect();
-    const ox = ((r.left + r.width / 2) / window.innerWidth) * 100;
-    const oy = ((r.top + r.height / 2) / window.innerHeight) * 100;
-    const mc = document.getElementById('modal-content');
-    mc.style.transformOrigin = `${ox}% ${oy}%`;
-    mc.classList.add('animating-in');
-    setTimeout(() => mc.classList.remove('animating-in'), 400);
+  const r = el.getBoundingClientRect();
+  const ox = ((r.left + r.width / 2) / window.innerWidth) * 100;
+  const oy = ((r.top + r.height / 2) / window.innerHeight) * 100;
+  const mc = document.getElementById('modal-content');
+  mc.style.transformOrigin = `${ox}% ${oy}%`;
+  mc.classList.add('animating-in');
+  setTimeout(() => mc.classList.remove('animating-in'), 400);
 }
 
 function openModal(e, clickedElement) {
-    const flyer = (e.Flyer || '').trim();
-    const flyerHR = getHighResImageUrl(flyer);
-    const media = document.getElementById('modal-media');
-    modalTriggerElement = clickedElement;
+  const flyer = (e.Flyer || '').trim();
+  const flyerHR = getHighResImageUrl(flyer);
+  const media = document.getElementById('modal-media');
+  modalTriggerElement = clickedElement;
 
-    if (flyer) {
-        media.innerHTML = `
-            <div class="modal-media-container">
-                <img src="${flyerHR}" alt="Event Flyer for ${e.Name}" loading="eager">
-                <button class="view-fullsize-btn" onclick="viewFullSize('${flyerHR}')" title="View Full Size" aria-label="View full size image">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
-                    </svg>
-                </button>
-            </div>`;
-        media.style.display = 'flex';
-    } else {
-        media.innerHTML = '';
-        media.style.display = 'none';
-    }
+  if (flyer) {
+    media.innerHTML = `
+      <div class="modal-media-container">
+        <img src="${flyerHR}" alt="Event Flyer for ${e.Name}" loading="eager">
+        <button class="view-fullsize-btn" onclick="viewFullSize('${flyerHR}')" title="View Full Size" aria-label="View full size image">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6" />
+          </svg>
+        </button>
+      </div>`;
+    media.style.display = 'flex';
+  } else {
+    media.innerHTML = '';
+    media.style.display = 'none';
+  }
 
-    document.getElementById('modal-title').innerText = e.Name || '';
-    document.getElementById('modal-desc').innerText  = e.Description || '';
-    document.getElementById('modal-meta').innerHTML  = `
-        <div class="meta-item">
-            <svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span><strong>Date:</strong> ${e.Month} ${e.Date}, ${e.Year}</span>
-        </div>
-        ${e.Time   ? `<div class="meta-item"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Time:</strong> ${e.Time}</span></div>` : ''}
-        ${e.Venue  ? `<div class="meta-item"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span><strong>Venue:</strong> ${e.Venue}${e.Location ? ', ' + e.Location : ''}</span></div>` : ''}
-        ${e.Contact? `<div class="meta-item"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span><strong>Contact:</strong> ${e.Contact}</span></div>` : ''}
-    `;
+  document.getElementById('modal-title').innerText = e.Name || '';
+  document.getElementById('modal-desc').innerText  = e.Description || '';
+  document.getElementById('modal-meta').innerHTML  = `
+    <div class="meta-item">
+      <svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+      <span><strong>Date:</strong> ${e.Month} ${e.Date}, ${e.Year}</span>
+    </div>
+    ${e.Time   ? `<div class="meta-item"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span><strong>Time:</strong> ${e.Time}</span></div>` : ''}
+    ${e.Venue  ? `<div class="meta-item"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span><strong>Venue:</strong> ${e.Venue}${e.Location ? ', ' + e.Location : ''}</span></div>` : ''}
+    ${e.Contact? `<div class="meta-item"><svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span><strong>Contact:</strong> ${e.Contact}</span></div>` : ''}
+  `;
 
-    const modal = document.getElementById('modal');
-    modal.classList.add('active');
-    document.body.classList.add('modal-open');
-    animateModalOpen(clickedElement);
-    setTimeout(() => document.getElementById('modal-close-btn').focus(), 100);
-    initFocusTrap();
+  const modal = document.getElementById('modal');
+  modal.classList.add('active');
+  document.body.classList.add('modal-open');
+  animateModalOpen(clickedElement);
+  setTimeout(() => document.getElementById('modal-close-btn').focus(), 100);
+  initFocusTrap();
 }
 
 function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.style.opacity = '0';
-    setTimeout(() => {
-        modal.classList.remove('active');
-        modal.style.opacity = '';
-        document.body.classList.remove('modal-open');
-        if (modalTriggerElement) { modalTriggerElement.focus(); modalTriggerElement = null; }
-    }, 200);
+  const modal = document.getElementById('modal');
+  modal.style.opacity = '0';
+  setTimeout(() => {
+    modal.classList.remove('active');
+    modal.style.opacity = '';
+    document.body.classList.remove('modal-open');
+    if (modalTriggerElement) { modalTriggerElement.focus(); modalTriggerElement = null; }
+  }, 200);
 }
 
 function initFocusTrap() {
-    const modal = document.getElementById('modal');
-    const els   = modal.querySelectorAll(FOCUSABLE_ELEMENTS);
-    const first = els[0], last = els[els.length - 1];
-    modal.addEventListener('keydown', function(e) {
-        if (e.key !== 'Tab') return;
-        if (e.shiftKey) { if (document.activeElement === first) { last.focus();  e.preventDefault(); } }
-        else            { if (document.activeElement === last)  { first.focus(); e.preventDefault(); } }
-    });
+  const modal = document.getElementById('modal');
+  const els   = modal.querySelectorAll(FOCUSABLE_ELEMENTS);
+  const first = els[0], last = els[els.length - 1];
+  modal.addEventListener('keydown', function(e) {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) { if (document.activeElement === first) { last.focus();  e.preventDefault(); } }
+    else            { if (document.activeElement === last)  { first.focus(); e.preventDefault(); } }
+  });
 }
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && document.getElementById('modal').classList.contains('active')) closeModal(); });
 document.getElementById('modal')?.addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 
 function loadEvents() {
-    Papa.parse(EVENTS_SHEET_URL, {
-        download: true, header: true,
-        complete: res => {
-            const grid = document.getElementById('events-grid');
-            res.data
-                .filter(e => e.Name && e.Name.trim())
-                .sort((a, b) => ({previous:0,current:1,future:2}[a.Type] - {previous:0,current:1,future:2}[b.Type]))
-                .forEach(e => {
-                    const t = e.Type || 'future';
-                    const card = document.createElement('article');
-                    card.className = `event-card ${t}`;
-                    card.setAttribute('tabindex', '0');
-                    card.setAttribute('role', 'button');
-                    card.setAttribute('aria-label', `View details for ${e.Name}`);
-                    card.innerHTML = `
-                        <div class="event-badge badge-${t}">${badgeText(t)}</div>
-                        <div class="event-image">
-                            ${e.ImageURL ? `<img src="${e.ImageURL}" alt="${e.Name} event image">` : ''}
-                            <div class="date-overlay">
-                                <div class="date-month">${e.Month}</div>
-                                <div class="date-day">${e.Date}</div>
-                                <div class="date-year">${e.Year}</div>
-                            </div>
-                        </div>
-                        <div class="event-content">
-                            <h2 class="event-name">${e.Name}</h2>
-                            ${e.Venue    ? `<div class="event-venue-info"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="venue-icon location-building"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span>${e.Venue}</span></div>` : ''}
-                            ${e.Location ? `<div class="event-venue-info"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="venue-icon venue-pin"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>${e.Location}</span></div>` : ''}
-                            <p class="event-description">${e.Summary || e.Description || ''}</p>
-                        </div>`;
-                    card.addEventListener('click', function() { openModal(e, this); });
-                    card.addEventListener('keydown', function(ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openModal(e, this); } });
-                    grid.appendChild(card);
-                });
-        }
-    });
+  Papa.parse(CONFIG.EVENTS_CSV, {
+    download: true, header: true,
+    complete: res => {
+      const grid = document.getElementById('events-grid');
+      res.data
+        .filter(e => e.Name && e.Name.trim())
+        .sort((a, b) => ({previous:0,current:1,future:2}[a.Type] - {previous:0,current:1,future:2}[b.Type]))
+        .forEach(e => {
+          const t = e.Type || 'future';
+          const card = document.createElement('article');
+          card.className = `event-card ${t}`;
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          card.setAttribute('aria-label', `View details for ${e.Name}`);
+          card.innerHTML = `
+            <div class="event-badge badge-${t}">${badgeText(t)}</div>
+            <div class="event-image">
+              ${e.ImageURL ? `<img src="${e.ImageURL}" alt="${e.Name} event image">` : ''}
+              <div class="date-overlay">
+                <div class="date-month">${e.Month}</div>
+                <div class="date-day">${e.Date}</div>
+                <div class="date-year">${e.Year}</div>
+              </div>
+            </div>
+            <div class="event-content">
+              <h2 class="event-name">${e.Name}</h2>
+              ${e.Venue    ? `<div class="event-venue-info"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="venue-icon location-building"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span>${e.Venue}</span></div>` : ''}
+              ${e.Location ? `<div class="event-venue-info"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="venue-icon venue-pin"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span>${e.Location}</span></div>` : ''}
+              <p class="event-description">${e.Summary || e.Description || ''}</p>
+            </div>`;
+          card.addEventListener('click', function() { openModal(e, this); });
+          card.addEventListener('keydown', function(ev) { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); openModal(e, this); } });
+          grid.appendChild(card);
+        });
+    }
+  });
 }
 
 // Organization Structure Functions
