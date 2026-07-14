@@ -7,6 +7,7 @@
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -72,67 +73,95 @@
             color: #64748b;
         }
 
-        /* ── Announcement Banner ── */
-        .announcement-banner {
-            background: #ffffff;
-            border: 1.5px solid #e5e7eb;
-            border-radius: 20px;
-            padding: 36px 48px;
-            margin-bottom: 30px;
-            text-align: center;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-        }
+        /* ── Admission Process ── */
+        
+        .admission-section {
+  padding: 20px 20px 60px;
+  max-width: 1080px;
+  margin: 0 auto;
+  width: 100%;
+}
+ 
+.admission-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+ 
+@media (max-width: 700px) {
+  .admission-grid {
+    grid-template-columns: 1fr;
+  }
+}
+ 
+.admission-card {
+  background: var(--apple-light-gray);
+  border-radius: 20px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background-color: #FFF0E1;
+box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+ 
+.admission-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+}
 
-        .announcement-banner .ann-label {
-            font-size: 1em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #56127D 0%, #B5171D 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 18px;
-        }
+.disclaimer{
+    color: #6b7280;
+    margin-bottom: 24px;
+    font-size: x-small;
+}
+ 
+.admission-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
+-webkit-text-fill-color: transparent;
+      background-clip: text;
+  font-size: 22px;
+}
+ 
+.admission-card-title {
+  font-size: 22px;
+  font-weight: 700;
+background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+  margin-bottom: 10px;
+}
+ 
+.admission-card-text {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+ 
+.admission-card .cta-button {
+  width: auto;
+  align-self: flex-start;
+  padding: 12px 24px;
+      background: #fff;
+      color:  #56127D ;
+}
 
-        .announcement-banner .ann-main {
-            font-size: 1.8em;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .announcement-banner .ann-secondary {
-            font-size: 1.15em;
-            font-weight: 600;
-            color: #6b7280; 
-            margin-bottom: 12px;
-        }
-
-        .announcement-banner .ann-tertiary {
-            font-size: 0.95em;
-            color: #6b7280;
-            font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-            .announcement-banner {
-                padding: 24px 20px;
-                border-radius: 16px;
-            }
-
-            .announcement-banner .ann-main {
-                font-size: 1.5em;
-            }
-
-            .announcement-banner .ann-secondary {
-                font-size: 1em;
-            }
-        }
+.gradient-text {
+  background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
 
         /* Hide scrollbars for all elements */
         * {
@@ -146,12 +175,15 @@
 
         /* Main Content Container */
         .main-container {
+            max-width: 1200px;
             background: rgba(255, 255, 255, 0.85);
             border-radius: 50px;
             padding: 40px;
             box-shadow: 0 20px 60px rgba(255, 140, 50, 0.15);
             backdrop-filter: blur(10px);
             margin-bottom: 30px;
+  margin-right: auto;
+  margin-left: auto;
         }
 
         /* Section Divider */
@@ -1359,15 +1391,32 @@
         </header>
     </div>
 
-    <!-- ── Announcement Banner ── -->
-    <div class="announcement-banner">
-        <p class="ann-label">Announcement</p>
-        <p class="ann-main">New Year Student Enrollment and Teachers hiring <br>form starts from July 15 to July 30</p>
-        <p class="ann-secondary">Last Day to pay Shala fees is August 10 2026</p>
-        
-    </div>
-
     <div class="main-container">
+
+         <!-- ── Admissions ── -->
+<section class="admission-section" id="admission-process">
+  <div class="admission-grid">
+    <div class="admission-card">
+      <div class="admission-card-icon"><i class="fa-solid fa-user-graduate"></i></div>
+      <h3 class="admission-card-title">Student Enrollment</h3>
+      <p class="admission-card-text">Enrollment for students is open now. Early bird offer valid upto 31st July 2026.</p>
+      <small class="disclaimer">** <b>Sankalp Marathi Mandal is now using Zeffy to make registrations and payments easier.</b>
+<br>Please Note: Zeffy may suggest an optional donation during checkout to support its platform. This donation goes to Zeffy, not Sankalp. You can select "Other" and enter any amount, including $0.</small>
+      <button class="cta-button cta-primary" onclick="window.open('https://www.zeffy.com/en-US/ticketing/sankalp-marathi-shala', '_blank')">
+        <span class="gradient-text">Enroll Now </span>
+      </button>
+    </div>
+    <div class="admission-card">
+      <div class="admission-card-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+      <h3 class="admission-card-title">Teacher Hiring</h3>
+      <p class="admission-card-text">Hiring for Teachers is open. Join our team and help us keep Marathi alive.</p>
+      <button class="cta-button cta-primary" onclick="window.open('#', '_blank')">
+        <span class="gradient-text">Apply Now </span>
+      </button>
+    </div>
+  </div>
+</section>
+
         <!-- Hero Section -->
         <div class="hero-section">
             <div class="hero-content">
