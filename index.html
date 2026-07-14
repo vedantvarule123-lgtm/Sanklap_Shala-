@@ -1544,9 +1544,9 @@ background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
         <div class="calendar-topbar">
             <h3 id="monthLabel" class="month-label"></h3>
             <div class="nav-btns">
-                <button class="nav-btn" id="prevMonth" type="button">Previous</button>
+                <p class="nav-btn1" id="prevMonth" type="button"></p>
                 <button class="nav-btn" id="todayBtn" type="button">Current Month</button>
-                <button class="nav-btn" id="nextMonth" type="button">Next</button>
+                <p class="nav-btn1" id="nextMonth" type="button"></p>
             </div>
         </div>
 
@@ -2067,15 +2067,15 @@ function loadOrganization() {
             });
         }
 
-        document.getElementById("prevMonth").addEventListener("click", () => {
-            currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
-            renderCalendar();
-        });
+        // document.getElementById("prevMonth").addEventListener("click", () => {
+        //     currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
+        //     renderCalendar();
+        // });
 
-        document.getElementById("nextMonth").addEventListener("click", () => {
-            currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
-            renderCalendar();
-        });
+        // document.getElementById("nextMonth").addEventListener("click", () => {
+        //     currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
+        //     renderCalendar();
+        // });
 
         document.getElementById("todayBtn").addEventListener("click", () => {
             const now = new Date();
