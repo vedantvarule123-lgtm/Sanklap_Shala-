@@ -443,7 +443,7 @@ background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
   white-space: nowrap;
 }
 
-.badge-previous { background: #6b7280; color: #fff; }
+.badge-Previous { background: #6b7280; color: #fff; }
 .badge-current  { background: #fbbf24; color: #1f2937; }
 .badge-future   { background: #10b981; color: #fff; }
 
@@ -1411,7 +1411,7 @@ background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
       <h3 class="admission-card-title">Teacher Hiring</h3>
       <p class="admission-card-text">Hiring for Teachers is open. Join our team and help us keep Marathi alive.</p>
       <button class="cta-button cta-primary" onclick="window.open('#', '_blank')">
-        <span class="gradient-text">Apply Now </span>
+        <span class="gradient-text">Coming Soon </span>
       </button>
     </div>
   </div>
@@ -1541,16 +1541,16 @@ background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
             <p class="section-subtitle">Weekly class schedule and important dates</p>
         </div>
 
-        <div class="calendar-topbar">
+        <!-- <div class="calendar-topbar">
             <h3 id="monthLabel" class="month-label"></h3>
             <div class="nav-btns">
                 <p class="nav-btn1" id="prevMonth" type="button"></p>
                 <button class="nav-btn" id="todayBtn" type="button">Current Month</button>
                 <p class="nav-btn1" id="nextMonth" type="button"></p>
             </div>
-        </div>
+        </div> -->
 
-        <div id="scheduleLoader" class="loading">Loading schedule...</div>
+        <div id="scheduleLoader" class="loading">Coming Soon</div>
 
         <section id="calendar" class="calendar" style="display: none;">
             <div class="calendar-head" id="weekdayHead"></div>
@@ -1675,7 +1675,7 @@ function viewFullSize(imageUrl) {
 }
 
 function badgeText(t) {
-  return t === 'previous' ? 'Previous' : t === 'current' ? 'Happening Now' : 'Upcoming';
+  return t === 'previous' ? 'previous' : t === 'current' ? 'Happening Now' : 'previous';
 }
 
 function animateModalOpen(el) {
@@ -1888,184 +1888,186 @@ function loadOrganization() {
     });
 }
 
+// ****************************************************
+
 // Schedule Functions
- const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ71Q0t4tbCvg8nRAdeCboZGT_jtJah5ZGsrsV2EDOKgxak2ktCkM1Y2GtnzoRHZA/pub?output=csv";
-        const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+//  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ71Q0t4tbCvg8nRAdeCboZGT_jtJah5ZGsrsV2EDOKgxak2ktCkM1Y2GtnzoRHZA/pub?output=csv";
+//         const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-        let currentMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
-        let scheduleRows = [];
+//         let currentMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+//         let scheduleRows = [];
 
-        function getEmoji(text) {
-            if (!text) return "📘";
-            const lower = text.toLowerCase();
-            if (lower.includes("exam")) return "📝";
-            if (lower.includes("holiday") || lower.includes("break")) return "🏖️";
-            if (lower.includes("diwali")) return "🪔";
-            if (lower.includes("christmas")) return "🎄";
-            if (lower.includes("project")) return "📌";
-            return "📘";
-        }
+//         function getEmoji(text) {
+//             if (!text) return "📘";
+//             const lower = text.toLowerCase();
+//             if (lower.includes("exam")) return "📝";
+//             if (lower.includes("holiday") || lower.includes("break")) return "🏖️";
+//             if (lower.includes("diwali")) return "🪔";
+//             if (lower.includes("christmas")) return "🎄";
+//             if (lower.includes("project")) return "📌";
+//             return "📘";
+//         }
 
-        function extractWeekNumber(value) {
-            const match = String(value || "").match(/\d+/);
-            return match ? Number(match[0]) : null;
-        }
+//         function extractWeekNumber(value) {
+//             const match = String(value || "").match(/\d+/);
+//             return match ? Number(match[0]) : null;
+//         }
 
-        function parseDateFromText(value) {
-            if (!value) return null;
-            const text = String(value).trim();
+//         function parseDateFromText(value) {
+//             if (!value) return null;
+//             const text = String(value).trim();
 
-            const dmyMatch = text.match(/\b(\d{1,2})[\/-](\d{1,2})(?:[\/-](\d{2,4}))?\b/);
-            if (dmyMatch) {
-                const day = Number(dmyMatch[1]);
-                const month = Number(dmyMatch[2]) - 1;
-                const year = dmyMatch[3] ? Number(dmyMatch[3].length === 2 ? "20" + dmyMatch[3] : dmyMatch[3]) : currentMonth.getFullYear();
-                const date = new Date(year, month, day);
-                return Number.isNaN(date.getTime()) ? null : date;
-            }
+//             const dmyMatch = text.match(/\b(\d{1,2})[\/-](\d{1,2})(?:[\/-](\d{2,4}))?\b/);
+//             if (dmyMatch) {
+//                 const day = Number(dmyMatch[1]);
+//                 const month = Number(dmyMatch[2]) - 1;
+//                 const year = dmyMatch[3] ? Number(dmyMatch[3].length === 2 ? "20" + dmyMatch[3] : dmyMatch[3]) : currentMonth.getFullYear();
+//                 const date = new Date(year, month, day);
+//                 return Number.isNaN(date.getTime()) ? null : date;
+//             }
 
-            const parsed = new Date(text);
-            return Number.isNaN(parsed.getTime()) ? null : parsed;
-        }
+//             const parsed = new Date(text);
+//             return Number.isNaN(parsed.getTime()) ? null : parsed;
+//         }
 
-        function fallbackDateFromWeekNum(weekNum, monthDate) {
-            if (!weekNum || weekNum < 1) return null;
-            const year = monthDate.getFullYear();
-            const month = monthDate.getMonth();
-            const day = Math.min((weekNum - 1) * 7 + 1, new Date(year, month + 1, 0).getDate());
-            return new Date(year, month, day);
-        }
+//         function fallbackDateFromWeekNum(weekNum, monthDate) {
+//             if (!weekNum || weekNum < 1) return null;
+//             const year = monthDate.getFullYear();
+//             const month = monthDate.getMonth();
+//             const day = Math.min((weekNum - 1) * 7 + 1, new Date(year, month + 1, 0).getDate());
+//             return new Date(year, month, day);
+//         }
 
-        function normalizeRows(rows) {
-            const normalized = [];
+//         function normalizeRows(rows) {
+//             const normalized = [];
 
-            for (let i = 1; i < rows.length; i++) {
-                const row = rows[i];
-                if (!row || row.length < 1) continue;
+//             for (let i = 1; i < rows.length; i++) {
+//                 const row = rows[i];
+//                 if (!row || row.length < 1) continue;
 
-                const [week, classes, rawWeek, info] = row;
-                if (!week && !classes && !rawWeek && !info) continue;
+//                 const [week, classes, rawWeek, info] = row;
+//                 if (!week && !classes && !rawWeek && !info) continue;
 
-                const weekNum = extractWeekNumber(rawWeek);
-                const dateFromWeek = parseDateFromText(week);
-                const dateFromRaw = parseDateFromText(rawWeek);
-                const dateFromInfo = parseDateFromText(info);
-                const fixedDate = dateFromWeek || dateFromRaw || dateFromInfo;
+//                 const weekNum = extractWeekNumber(rawWeek);
+//                 const dateFromWeek = parseDateFromText(week);
+//                 const dateFromRaw = parseDateFromText(rawWeek);
+//                 const dateFromInfo = parseDateFromText(info);
+//                 const fixedDate = dateFromWeek || dateFromRaw || dateFromInfo;
 
-                normalized.push({
-                    week: week || "-",
-                    classes: classes || "No Class",
-                    rawWeek: rawWeek || "",
-                    info: info || "",
-                    weekNum,
-                    fixedDate
-                });
-            }
+//                 normalized.push({
+//                     week: week || "-",
+//                     classes: classes || "No Class",
+//                     rawWeek: rawWeek || "",
+//                     info: info || "",
+//                     weekNum,
+//                     fixedDate
+//                 });
+//             }
 
-            return normalized;
-        }
+//             return normalized;
+//         }
 
-        function getEventsByDay(monthDate) {
-            const events = {};
-            const year = monthDate.getFullYear();
-            const month = monthDate.getMonth();
+//         function getEventsByDay(monthDate) {
+//             const events = {};
+//             const year = monthDate.getFullYear();
+//             const month = monthDate.getMonth();
 
-            for (const item of scheduleRows) {
-                let date = null;
+//             for (const item of scheduleRows) {
+//                 let date = null;
 
-                if (item.fixedDate) {
-                    date = new Date(item.fixedDate);
-                } else if (item.weekNum) {
-                    date = fallbackDateFromWeekNum(item.weekNum, monthDate);
-                }
+//                 if (item.fixedDate) {
+//                     date = new Date(item.fixedDate);
+//                 } else if (item.weekNum) {
+//                     date = fallbackDateFromWeekNum(item.weekNum, monthDate);
+//                 }
 
-                if (!date) continue;
-                if (date.getFullYear() !== year || date.getMonth() !== month) continue;
+//                 if (!date) continue;
+//                 if (date.getFullYear() !== year || date.getMonth() !== month) continue;
 
-                const dayKey = date.getDate();
-                if (!events[dayKey]) events[dayKey] = [];
-                events[dayKey].push(item);
-            }
+//                 const dayKey = date.getDate();
+//                 if (!events[dayKey]) events[dayKey] = [];
+//                 events[dayKey].push(item);
+//             }
 
-            return events;
-        }
+//             return events;
+//         }
 
-        function renderWeekdayHead() {
-            const head = document.getElementById("weekdayHead");
-            head.innerHTML = "";
-            for (const day of WEEKDAYS) {
-                const cell = document.createElement("div");
-                cell.className = "weekday";
-                cell.textContent = day;
-                head.appendChild(cell);
-            }
-        }
+//         function renderWeekdayHead() {
+//             const head = document.getElementById("weekdayHead");
+//             head.innerHTML = "";
+//             for (const day of WEEKDAYS) {
+//                 const cell = document.createElement("div");
+//                 cell.className = "weekday";
+//                 cell.textContent = day;
+//                 head.appendChild(cell);
+//             }
+//         }
 
-        function renderCalendar() {
-            const monthLabel = document.getElementById("monthLabel");
-            const grid = document.getElementById("calendarGrid");
-            const today = new Date();
-            const year = currentMonth.getFullYear();
-            const month = currentMonth.getMonth();
-            const firstDay = new Date(year, month, 1);
-            const startWeekday = firstDay.getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
+//         function renderCalendar() {
+//             const monthLabel = document.getElementById("monthLabel");
+//             const grid = document.getElementById("calendarGrid");
+//             const today = new Date();
+//             const year = currentMonth.getFullYear();
+//             const month = currentMonth.getMonth();
+//             const firstDay = new Date(year, month, 1);
+//             const startWeekday = firstDay.getDay();
+//             const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-            monthLabel.textContent = firstDay.toLocaleDateString(undefined, { month: "long", year: "numeric" });
-            grid.innerHTML = "";
+//             monthLabel.textContent = firstDay.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+//             grid.innerHTML = "";
 
-            const events = getEventsByDay(currentMonth);
+//             const events = getEventsByDay(currentMonth);
 
-            for (let i = 0; i < startWeekday; i++) {
-                const empty = document.createElement("div");
-                empty.className = "day-cell day-empty";
-                grid.appendChild(empty);
-            }
+//             for (let i = 0; i < startWeekday; i++) {
+//                 const empty = document.createElement("div");
+//                 empty.className = "day-cell day-empty";
+//                 grid.appendChild(empty);
+//             }
 
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayCell = document.createElement("div");
-                dayCell.className = "day-cell";
+//             for (let day = 1; day <= daysInMonth; day++) {
+//                 const dayCell = document.createElement("div");
+//                 dayCell.className = "day-cell";
 
-                const dayNum = document.createElement("span");
-                dayNum.className = "day-number";
-                dayNum.textContent = day;
+//                 const dayNum = document.createElement("span");
+//                 dayNum.className = "day-number";
+//                 dayNum.textContent = day;
 
-                const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
-                if (isToday) dayNum.classList.add("today");
+//                 const isToday = today.getFullYear() === year && today.getMonth() === month && today.getDate() === day;
+//                 if (isToday) dayNum.classList.add("today");
 
-                dayCell.appendChild(dayNum);
+//                 dayCell.appendChild(dayNum);
 
-                const dayEvents = events[day] || [];
-                for (const e of dayEvents) {
-                    const item = document.createElement("div");
-                    item.className = "event";
-                    const modeClass = e.classes.toLowerCase().includes("online") ? "online" : "in-person";
-                    item.innerHTML = `<b>${e.week}</b><br><span class="badge ${modeClass}">${e.classes}</span>${e.info ? `<br>${getEmoji(e.info)} ${e.info}` : ""}`;
-                    dayCell.appendChild(item);
-                }
+//                 const dayEvents = events[day] || [];
+//                 for (const e of dayEvents) {
+//                     const item = document.createElement("div");
+//                     item.className = "event";
+//                     const modeClass = e.classes.toLowerCase().includes("online") ? "online" : "in-person";
+//                     item.innerHTML = `<b>${e.week}</b><br><span class="badge ${modeClass}">${e.classes}</span>${e.info ? `<br>${getEmoji(e.info)} ${e.info}` : ""}`;
+//                     dayCell.appendChild(item);
+//                 }
 
-                grid.appendChild(dayCell);
-            }
-        }
+//                 grid.appendChild(dayCell);
+//             }
+//         }
 
-        function loadSchedule() {
-            Papa.parse(CSV_URL, {
-                download: true,
-                header: false,
-                skipEmptyLines: "greedy",
-                complete: function (results) {
-                    scheduleRows = normalizeRows(results.data || []);
-                    renderWeekdayHead();
-                    renderCalendar();
-                    document.getElementById("scheduleLoader").style.display = "none";
-                    document.getElementById("calendar").style.display = "block";
-                },
-                error: function (err) {
-                    document.getElementById("scheduleLoader").innerText = "Failed to load schedule.";
-                    console.error(err);
-                }
-            });
-        }
+        // function loadSchedule() {
+        //     Papa.parse(CSV_URL, {
+        //         download: true,
+        //         header: false,
+        //         skipEmptyLines: "greedy",
+        //         complete: function (results) {
+        //             scheduleRows = normalizeRows(results.data || []);
+        //             renderWeekdayHead();
+        //             renderCalendar();
+        //             document.getElementById("scheduleLoader").style.display = "none";
+        //             document.getElementById("calendar").style.display = "block";
+        //         },
+        //         error: function (err) {
+        //             document.getElementById("scheduleLoader").innerText = "Failed to load schedule.";
+        //             console.error(err);
+        //         }
+        //     });
+        // }
 
         // document.getElementById("prevMonth").addEventListener("click", () => {
         //     currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
@@ -2077,13 +2079,15 @@ function loadOrganization() {
         //     renderCalendar();
         // });
 
-        document.getElementById("todayBtn").addEventListener("click", () => {
-            const now = new Date();
-            currentMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-            renderCalendar();
-        });
+        // document.getElementById("todayBtn").addEventListener("click", () => {
+        //     const now = new Date();
+        //     currentMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+        //     renderCalendar();
+        // });
 
-        loadSchedule();
+        // loadSchedule();
+
+        /*******************************************************/ 
 
 // function getEmoji(text) {
 //     if (!text) return '📘';
