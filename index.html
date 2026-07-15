@@ -1379,6 +1379,92 @@ background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
                 font-size: 24px;
             }
         }
+
+        /* =====================================================
+   FOOTER
+   ===================================================== */
+footer{
+  width: 100%;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+  padding-left: 48px;
+  padding-right: 48px;
+  background: #f1f3f4;
+  text-align: center;
+}
+
+.footer-inner {
+  display: inline-block;
+  text-align: center;
+  background: #f1f3f4;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (min-width: 768px) {
+    .footer-inner {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+}
+ 
+.footer-welcome {
+  max-width: 860px;
+  text-align: center;
+  justify-content: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #1d1d1f;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+ 
+.footer-tagline {
+  padding-top: 12px;
+  font-family: 'Tiro Devanagari Marathi', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 28px;
+}
+ 
+.footer-copyright {
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #1d1d1f;
+  margin-bottom: 28px;
+}
+ 
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+ 
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin: 6px;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+ 
+.footer-social a:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+ 
+.footer-social img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: block;
+}
     </style>
 </head>
 
@@ -1595,6 +1681,29 @@ background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
             </div>
         </div>
     </div>
+
+    <footer>
+<div class="footer-inner">
+  <p class="footer-welcome">
+    We extend a warm welcome to everyone to join our connected Marathi community. Together, let's extend a helping hand to others and contribute to creating a healthy and peaceful society worldwide.
+  </p>
+  <p class="footer-tagline">एक संकल्प मराठी जपण्याचा</p>
+  <p class="footer-copyright">Copyright © <span id="currentYear"></span> Sankalp - All Rights Reserved.</p>
+ 
+  <div class="footer-social">
+    <a href="https://www.instagram.com/sankalpmarathimandal" target="_blank" aria-label="Instagram">
+      <i class="fa-brands fa-square-instagram" style="font-size: 32px; color: #E36C18;"></i>
+    </a>
+    <a href="https://www.facebook.com/share/g/18UEkDGmBE/" target="_blank" aria-label="Facebook">
+       <i class="fa-brands fa-square-facebook" style="font-size: 32px; color: #E36C18;"></i>
+    </a>
+    <a href="https://www.youtube.com/@sankalpmarathimandal4296" target="_blank" aria-label="YouTube">
+       <i class="fa-brands fa-square-youtube" style="font-size: 32px; color: #E36C18;"></i>
+    </a>
+  </div>
+  </div>
+</footer>
+
 </div>
 
 <script>
