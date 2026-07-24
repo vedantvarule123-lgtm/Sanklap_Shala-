@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sankalp Marathi Shala - Complete Information</title>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.11/dist/dotlottie-wc.js" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1040,8 +1041,13 @@ background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
         }
 
         .in-person {
-            background: #ffedd5;
-            color: #9a3412;
+           background: #dbeafe;
+            color: #1e40af
+        }
+
+           .holiday {
+            background: #fee2e2;
+            color: #b91c1c;
         }
 
         .loading {
@@ -1627,6 +1633,7 @@ footer{
             <p class="section-subtitle">Weekly class schedule and important dates</p>
         </div>
 
+        <div id="scheduleLoader" class="loading">Loading schedule...</div>
         <div class="calendar-topbar">
             <h3 id="monthLabel" class="month-label"></h3>
             <div class="nav-btns">
@@ -1998,37 +2005,59 @@ function loadOrganization() {
 // ****************************************************
 
 // Schedule Functions
- const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ71Q0t4tbCvg8nRAdeCboZGT_jtJah5ZGsrsV2EDOKgxak2ktCkM1Y2GtnzoRHZA/pub?output=csv";
+  const SHEET_LINK = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQXIFZB2y9E9ePmdB-B48wD81tJFNnMV22aY7PcrBAbYSe8bQfxnMsPuU6Pxm-7hg/pub?gid=871380886&single=true&output=csv";
         const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
         let currentMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
         let scheduleRows = [];
 
-        function getEmoji(text) {
-            if (!text) return "📘";
-            const lower = text.toLowerCase();
-            if (lower.includes("exam")) return "📝";
-            if (lower.includes("holiday") || lower.includes("break")) return "🏖️";
-            if (lower.includes("diwali")) return "🪔";
-            if (lower.includes("christmas")) return "🎄";
-            if (lower.includes("project")) return "📌";
-            return "📘";
+        function getCsvUrlFromGoogleSheet(url) {
+            // If a published CSV link is already provided, use it directly.
+            if (String(url).includes("output=csv")) return String(url);
+
+            const match = String(url).match(/\/d\/([a-zA-Z0-9-_]+)/);
+            if (!match) return "";
+            const sheetId = match[1];
+            return `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
         }
 
-        function extractWeekNumber(value) {
-            const match = String(value || "").match(/\d+/);
-            return match ? Number(match[0]) : null;
-        }
-
-        function parseDateFromText(value) {
+        function parseDateValue(value) {
             if (!value) return null;
             const text = String(value).trim();
 
-            const dmyMatch = text.match(/\b(\d{1,2})[\/-](\d{1,2})(?:[\/-](\d{2,4}))?\b/);
-            if (dmyMatch) {
-                const day = Number(dmyMatch[1]);
-                const month = Number(dmyMatch[2]) - 1;
-                const year = dmyMatch[3] ? Number(dmyMatch[3].length === 2 ? "20" + dmyMatch[3] : dmyMatch[3]) : currentMonth.getFullYear();
+            if (/^\d{4,6}$/.test(text)) {
+                const serial = Number(text);
+                if (!Number.isNaN(serial) && serial > 59) {
+                    const excelEpoch = new Date(Date.UTC(1899, 11, 30));
+                    const millis = serial * 24 * 60 * 60 * 1000;
+                    const converted = new Date(excelEpoch.getTime() + millis);
+                    return new Date(converted.getUTCFullYear(), converted.getUTCMonth(), converted.getUTCDate());
+                }
+            }
+
+            // Sheet uses mm/dd/yyyy format.
+            const mdyMatch = text.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);
+            if (mdyMatch) {
+                const month = Number(mdyMatch[1]) - 1;
+                const day = Number(mdyMatch[2]);
+                const year = Number(mdyMatch[3].length === 2 ? `20${mdyMatch[3]}` : mdyMatch[3]);
+                const date = new Date(year, month, day);
+                if (
+                    Number.isNaN(date.getTime()) ||
+                    date.getFullYear() !== year ||
+                    date.getMonth() !== month ||
+                    date.getDate() !== day
+                ) {
+                    return null;
+                }
+                return date;
+            }
+
+            const isoMatch = text.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+            if (isoMatch) {
+                const year = Number(isoMatch[1]);
+                const month = Number(isoMatch[2]) - 1;
+                const day = Number(isoMatch[3]);
                 const date = new Date(year, month, day);
                 return Number.isNaN(date.getTime()) ? null : date;
             }
@@ -2037,37 +2066,37 @@ function loadOrganization() {
             return Number.isNaN(parsed.getTime()) ? null : parsed;
         }
 
-        function fallbackDateFromWeekNum(weekNum, monthDate) {
-            if (!weekNum || weekNum < 1) return null;
-            const year = monthDate.getFullYear();
-            const month = monthDate.getMonth();
-            const day = Math.min((weekNum - 1) * 7 + 1, new Date(year, month + 1, 0).getDate());
-            return new Date(year, month, day);
+        function findHeaderKey(row, candidates) {
+            if (!row) return "";
+            const keys = Object.keys(row);
+            for (const key of keys) {
+                const normalized = key.trim().toLowerCase();
+                if (candidates.some((c) => c.test(normalized))) return key;
+            }
+            return "";
         }
 
         function normalizeRows(rows) {
+            if (!rows.length) return [];
+
+            const firstRow = rows[0];
+            const dateKey = findHeaderKey(firstRow, [/^date$/, /^class\s*date$/, /date/]);
+            const weekKey = findHeaderKey(firstRow, [/^week$/, /week/]);
+            const classTypeKey = findHeaderKey(firstRow, [/^class\s*type$/, /^class$/, /type/, /mode/]);
+
             const normalized = [];
+            for (const row of rows) {
+                const dateRaw = dateKey ? row[dateKey] : "";
+                const weekRaw = weekKey ? row[weekKey] : "";
+                const classTypeRaw = classTypeKey ? row[classTypeKey] : "";
 
-            for (let i = 1; i < rows.length; i++) {
-                const row = rows[i];
-                if (!row || row.length < 1) continue;
-
-                const [week, classes, rawWeek, info] = row;
-                if (!week && !classes && !rawWeek && !info) continue;
-
-                const weekNum = extractWeekNumber(rawWeek);
-                const dateFromWeek = parseDateFromText(week);
-                const dateFromRaw = parseDateFromText(rawWeek);
-                const dateFromInfo = parseDateFromText(info);
-                const fixedDate = dateFromWeek || dateFromRaw || dateFromInfo;
+                const date = parseDateValue(dateRaw);
+                if (!date || (!weekRaw && !classTypeRaw)) continue;
 
                 normalized.push({
-                    week: week || "-",
-                    classes: classes || "No Class",
-                    rawWeek: rawWeek || "",
-                    info: info || "",
-                    weekNum,
-                    fixedDate
+                    date,
+                    week: String(weekRaw || "-").trim(),
+                    classType: String(classTypeRaw || "No Class").trim()
                 });
             }
 
@@ -2080,17 +2109,8 @@ function loadOrganization() {
             const month = monthDate.getMonth();
 
             for (const item of scheduleRows) {
-                let date = null;
-
-                if (item.fixedDate) {
-                    date = new Date(item.fixedDate);
-                } else if (item.weekNum) {
-                    date = fallbackDateFromWeekNum(item.weekNum, monthDate);
-                }
-
-                if (!date) continue;
+                const date = new Date(item.date);
                 if (date.getFullYear() !== year || date.getMonth() !== month) continue;
-
                 const dayKey = date.getDate();
                 if (!events[dayKey]) events[dayKey] = [];
                 events[dayKey].push(item);
@@ -2148,8 +2168,9 @@ function loadOrganization() {
                 for (const e of dayEvents) {
                     const item = document.createElement("div");
                     item.className = "event";
-                    const modeClass = e.classes.toLowerCase().includes("online") ? "online" : "in-person";
-                    item.innerHTML = `<b>${e.week}</b><br><span class="badge ${modeClass}">${e.classes}</span>${e.info ? `<br>${getEmoji(e.info)} ${e.info}` : ""}`;
+                     const classType = e.classType.toLowerCase();
+                    const modeClass = classType.includes("holiday") ? "holiday" : classType.includes("online") ? "online" : "in-person";
+                    item.innerHTML = `<b>${e.week}</b><br><span class="badge ${modeClass}">${e.classType}</span>`;
                     dayCell.appendChild(item);
                 }
 
@@ -2158,19 +2179,32 @@ function loadOrganization() {
         }
 
         function loadSchedule() {
-            Papa.parse(CSV_URL, {
+            const csvUrl = getCsvUrlFromGoogleSheet(SHEET_LINK);
+
+            if (!csvUrl) {
+                document.getElementById("scheduleLoader").innerText = "Invalid Google Sheet link.";
+                return;
+            }
+
+            Papa.parse(csvUrl, {
                 download: true,
-                header: false,
+                header: true,
                 skipEmptyLines: "greedy",
                 complete: function (results) {
                     scheduleRows = normalizeRows(results.data || []);
+
+                    if (!scheduleRows.length) {
+                        document.getElementById("scheduleLoader").innerText = "No schedule rows found. Check first-sheet headers: Date, Week, Class Type.";
+                        return;
+                    }
+
                     renderWeekdayHead();
                     renderCalendar();
                     document.getElementById("scheduleLoader").style.display = "none";
                     document.getElementById("calendar").style.display = "block";
                 },
                 error: function (err) {
-                    document.getElementById("scheduleLoader").innerText = "Failed to load schedule.";
+                    document.getElementById("scheduleLoader").innerText = "Failed to load schedule. Make sure the sheet is shared publicly.";
                     console.error(err);
                 }
             });
