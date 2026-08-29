@@ -763,6 +763,113 @@ background-image: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
             line-height: 1.7;
             color: #4A5568;
         }
+         /* ── Guidelines ── */
+        .guidelines-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .guideline-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            display: flex;
+            flex-direction: column;
+            word-wrap: break-word;
+        }
+
+        .guideline-card:nth-child(1) { border-color: #FFB347; }
+        .guideline-card:nth-child(2) { border-color: #4ECDC4; }
+
+        .guideline-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+        }
+
+        .guideline-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .guideline-icon svg { width: 26px; height: 26px; }
+
+        .guideline-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2D3748;
+            margin-bottom: 10px;
+        }
+
+        .guideline-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4A5568;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .guideline-actions {
+            display: flex;
+            gap: 12px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .guideline-actions a {
+            flex: 1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            padding: 12px 14px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .guideline-actions svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+
+        .guideline-btn-view {
+            background: linear-gradient(135deg, #B5171D 0%, #56127D 100%);
+            color: #fff;
+        }
+
+        .guideline-btn-view:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(86, 18, 125, 0.3);
+        }
+
+        .guideline-btn-download {
+            background: #FFF0E1;
+            color: #56127D;
+            border: 1px solid rgba(181, 23, 29, 0.15);
+        }
+
+        .guideline-btn-download:hover {
+            background: #FFE5CC;
+            transform: translateY(-2px);
+        }
+
 
         /* Organization Structure */
         .org-section {
@@ -1541,6 +1648,78 @@ footer{
     </div>
   </div>
 </div>
+
+<!-- Guidelines -->
+ <section id="guidelines" aria-labelledby="guidelines-heading">
+            <div class="section-header">
+                <h2 class="section-title" id="guidelines-heading">Guidelines</h2>
+                <p class="section-subtitle">Reference documents for teachers and parents, ready to view online or save for later</p>
+            </div>
+            <div class="guidelines-grid">
+
+                <article class="guideline-card">
+                    <div class="guideline-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="guideline-title">Teachers Guidelines</h3>
+                    <p class="guideline-description">Classroom setup, lesson pacing, and assessment guidance for teaching staff.</p>
+                    <div class="guideline-actions">
+                        <a class="guideline-btn-view" href="/WebTeachersHandbook.pdf" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            View
+                        </a>
+                        <a class="guideline-btn-download" href="/WebTeachersHandbook.pdf" download>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </article>
+
+                <article class="guideline-card">
+                    <div class="guideline-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="guideline-title">Parents Guidelines</h3>
+                    <p class="guideline-description">Everything families need to know about schedules, communication, and support at home.</p>
+                    <div class="guideline-actions">
+                        <a class="guideline-btn-view" href="/WebParentsHandbook.pdf" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                            View
+                        </a>
+                        <a class="guideline-btn-download" href="/WebParentsHandbook.pdf" download>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Download
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
 
         <!-- Why This Matters Section -->
         <div class="section-header">
